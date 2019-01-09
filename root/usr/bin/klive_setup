@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+cp --verbose -f /klive_server/setting.py /config/setting.py.sample
+cp --verbose -f /klive_server/custom.txt /config/custom.txt.sample
+
+# permissions
+chown -R abc:abc \
+	/config

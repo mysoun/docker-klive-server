@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bash
+
+exec \
+	s6-setuidgid abc /bin/sh -c "cd /klive_server && python -u kliveProxy.py"

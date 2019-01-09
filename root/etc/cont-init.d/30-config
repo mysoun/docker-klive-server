@@ -1,0 +1,24 @@
+#!/usr/bin/with-contenv bash
+set -e
+
+# make folders
+[[ ! -d "/config" ]] && mkdir /config
+
+# check config files exist in /config
+while [ ! -f "/config/setting.py" ] || [ ! -f "/config/custom.txt" ]
+do
+	printf "\n======================================================================\n"
+	echo "klive_server has not yet been set up."
+	echo "Please run klive_setup to have setting.py and custom.txt in /config."
+	printf "======================================================================\n"
+	sleep 30
+done
+
+# load settings
+cp -f /config/setting.py /klive_server/setting.py
+cp -f /config/custom.txt /klive_server/custom.txt
+
+# permissions
+chown -R abc:abc \
+	/config \
+	/klive_server
